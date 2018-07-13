@@ -1,0 +1,30 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Nested Stack Template to create IAM EC2 instance profile: Version 0.1",
+    "Parameters": {
+        "IAMRole": {
+            "Type": "String",
+            "Description": "IAM role"
+        }
+    },
+    "Resources": {
+        "CloudLensQuickStartIAMInstanceProfile": {
+            "Type": "AWS::IAM::InstanceProfile",
+            "Properties": {
+                "Path": "/",
+                "Roles": [
+                    {
+                        "Ref": "IAMRole"
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs" : {
+        "IAMInstanceProfile" : {
+           "Value" : {
+                "Ref": "CloudLensQuickStartIAMInstanceProfile"
+            }
+        }
+    }
+}

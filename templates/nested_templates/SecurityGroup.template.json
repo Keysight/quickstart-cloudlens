@@ -1,0 +1,111 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Nested Stack Template to create Security Group: Version 0.1",
+    "Parameters" : {
+        "SecurityGroupName" : {
+          "Type" : "String",
+          "Description" : "Security Group Name",
+          "Default" : "CloudLensQuickStartSecurityGroup"
+        },
+        "VPC" : {
+          "Type" : "AWS::EC2::VPC::Id",
+          "Description" : "VPC Id is required to create security group"
+        }
+    },
+    "Resources": {
+        "SecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Enable access to only a set of ports",
+                "VpcId" : { "Ref" : "VPC" },
+                "SecurityGroupIngress": [
+                {
+                    "IpProtocol": "tcp",
+                    "CidrIp": "0.0.0.0/0",
+                    "FromPort": "443",
+                    "ToPort": "443"
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "CidrIp": "0.0.0.0/0",
+                    "FromPort": "8883",
+                    "ToPort": "8883"
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "CidrIp": "0.0.0.0/0",
+                    "FromPort": "8443",
+                    "ToPort": "8443"
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "CidrIp": "0.0.0.0/0",
+                    "FromPort": "22",
+                    "ToPort": "22"
+                },
+                {
+                    "IpProtocol": "udp",
+                    "CidrIp": "0.0.0.0/0",
+                    "FromPort": "19993",
+                    "ToPort": "19993"
+                } ],
+                "SecurityGroupEgress" : [
+                {
+                    "IpProtocol" : "tcp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "80",
+                    "ToPort": "80"
+                },
+                {
+                "IpProtocol" : "tcp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "443",
+                    "ToPort": "443"
+                },
+                {
+                    "IpProtocol" : "tcp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "8883",
+                    "ToPort": "8883"
+                },
+                {
+                    "IpProtocol" : "tcp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "8443",
+                    "ToPort": "8443"
+                },
+                {
+                    "IpProtocol" : "udp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "9993",
+                    "ToPort": "9993"
+                },
+                {
+                    "IpProtocol" : "udp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "19993",
+                    "ToPort": "19993"
+                },
+                {
+                    "IpProtocol" : "tcp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "40000",
+                    "ToPort": "40007"
+                },
+                {
+                    "IpProtocol" : "tcp",
+                    "CidrIp" : "0.0.0.0/0",
+                    "FromPort": "41000",
+                    "ToPort": "41004"
+                } ]
+            }
+        }
+    },
+    "Outputs" : {
+        "InstanceSecurityGroup" : {
+           "Value" : {
+               "Ref": "SecurityGroup"
+            }
+        }
+    }
+}
