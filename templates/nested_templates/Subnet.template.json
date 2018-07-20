@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
-  "Description" : "Template to create a subnet: Version: 0.1",
+  "Description" : "Template to create a subnet: Version: 0.1. Copyright 2018  Keysight Technologies",
   "Parameters" : {
     "CloudlensAvailabilityZone": {
       "Type" : "String",

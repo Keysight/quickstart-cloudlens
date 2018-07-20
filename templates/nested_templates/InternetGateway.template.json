@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion":"2010-09-09",
-    "Description":"Template to create IGW in a specified VPC and add subnet to access internet gateway: Version 0.1",
+    "Description":"Template to create IGW in a specified VPC and add subnet to access internet gateway: Version 0.1. Copyright 2018  Keysight Technologies",
     "Parameters":{
         "VPC":{
             "Description":"VPC Id is required to create an IGW",

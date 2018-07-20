@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Nested Stack Template to create IAM Role: Version 0.1",
+    "Description": "Nested Stack Template to create IAM Role: Version 0.1. Copyright 2018  Keysight Technologies",
     "Resources": {
         "IAMRole": {
             "Type": "AWS::IAM::Role",

@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS CloudFormation template creates a CloudLens Quick Start environment with 2 Linux Instances.",
+    "Description": "AWS CloudFormation template creates a CloudLens Quick Start environment with 2 Linux Instances. Copyright 2018  Keysight Technologies",
     "Parameters": {
         "VPCName": {
             "Type": "String",

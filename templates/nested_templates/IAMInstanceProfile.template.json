@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Nested Stack Template to create IAM EC2 instance profile: Version 0.1",
+    "Description": "Nested Stack Template to create IAM EC2 instance profile: Version 0.1. Copyright 2018  Keysight Technologies",
     "Parameters": {
         "IAMRole": {
             "Type": "String",
