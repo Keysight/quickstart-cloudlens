@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS CloudFormation template creates a CloudLens Quick Start environment with 2 Linux Instances. Copyright 2018  Keysight Technologies",
+    "Description": "AWS CloudFormation template creates a CloudLens Quick Start environment with 2 Linux Instances. Copyright 2018 Keysight Technologies",
     "Parameters": {
         "VPCName": {
             "Type": "String",
@@ -341,6 +341,30 @@
         }
     },
     "Resources": {
+        "AMIVerificationLambda": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": "https://s3.amazonaws.com/cloudlens-automation/quickstart/AMIVerificationLambda.template.json",
+                "TimeoutInMinutes": "60"
+            }
+        },
+        "VerifyEastwindAmi": {
+            "Type": "AWS::CloudFormation::Stack",
+            "DependsOn": ["AMIVerificationLambda"],
+            "Properties": {
+                "TemplateURL": "https://s3.amazonaws.com/cloudlens-automation/quickstart/VerifyEastwindAMI.template.json",
+                "Parameters": {
+                    "ToolAMIInfoFunctionArn": {
+                        "Fn::GetAtt": [
+                            "AMIVerificationLambda",
+                            "Outputs.ToolAMIInfoFunctionArn"
+                        ]
+                    }
+                },
+                "TimeoutInMinutes": "60"
+            },
+            "DeletionPolicy" : "Retain"
+        },
         "VPC": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {

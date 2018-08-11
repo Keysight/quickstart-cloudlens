@@ -1,0 +1,80 @@
+{ 
+    "AWSTemplateFormatVersion": "2010-09-09", 
+    "Description": "Verification lambda for eastwind subscription. Copyright 2018  Keysight Technologies",
+
+    "Resources": { 
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                        "Effect": "Allow",
+                        "Principal": {"Service": ["lambda.amazonaws.com"]},
+                        "Action": ["sts:AssumeRole"]
+                    }]
+                },
+                "Path": "/",
+                "Policies": [{
+                    "PolicyName": "root",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [{
+                            "Effect": "Allow",
+                            "Action": ["logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"],
+                            "Resource": "arn:aws:logs:*:*:*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": ["ec2:DescribeImages"],
+                            "Resource": "*"
+                        }]
+                    }
+                }]
+            }
+        },
+        "ToolAMIInfoFunction": {
+            "Type": "AWS::Lambda::Function",
+            "DependsOn": ["LambdaExecutionRole"],
+            "Properties": {
+                "Code": {
+                    "ZipFile":  { "Fn::Join": ["", [
+                        "var aws = require(\"aws-sdk\");",
+                        "var response = require(\"cfn-response\");",
+                        "exports.handler = function(event, context) {",
+                        "    var responseStatus = \"FAILED\";",
+                        "    var responseData = {};",
+                        "    var ec2 = new aws.EC2({region: event.ResourceProperties.Region});",
+                        "    var describeImagesParams = {",
+                        "        Filters: [{ Name: \"name\", Values: [\"*eastwind-cloudlens-sensor*\"]}],",
+                        "    };",
+                        "    ec2.describeImages(describeImagesParams, function(err, describeImagesResult) {",
+                        "       var images = describeImagesResult.Images;",
+                        "       if(images.length != 0 ){",
+                        "           responseStatus = \"SUCCESS\";",
+                        "           responseData[\"isAMI\"] = \"Eastwind subscription is active\";",
+                        "           response.send(event, context, responseStatus, responseData);",
+                        "       }else {",
+                        "           responseStatus = \"SUCCESS\";",
+                        "           responseData[\"isAMI\"] = \"Quickstart failed because eastwind subscription is not active\";",
+                        "           response.send(event, context, responseStatus, responseData);",
+                        "       }",
+                        "    });",
+                        "};"
+                    ]]}
+                },
+                "Handler": "index.handler",
+                "Role": { "Fn::GetAtt" : ["LambdaExecutionRole", "Arn"] },
+                "Runtime": "nodejs6.10",
+                "Timeout": "30"
+            }
+        }
+    },         
+    "Outputs" : { 
+        "ToolAMIInfoFunctionArn" : {
+            "Value" : {
+                "Fn::GetAtt" : ["ToolAMIInfoFunction", "Arn"]
+             }
+        }
+    } 
+}
