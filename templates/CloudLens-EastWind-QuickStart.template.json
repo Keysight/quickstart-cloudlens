@@ -45,7 +45,8 @@
         },
         "CustomAMIId": {
             "Type": "String",
-            "Description" : "Optional AMI ID for source instance, if not specified Ubuntu 16.04 is default"
+            "Description" : "Optional AMI ID for source instance, if not specified Ubuntu 16.04 is default",
+            "Default": ""
         },
         "SourceInstanceType" : {
             "Description" : "EC2 instance type for source",
