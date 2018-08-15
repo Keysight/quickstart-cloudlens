@@ -3,7 +3,6 @@ global:
   owner: luis.cazacu@keysight.com
   qsname: quickstart-cloudlens
   regions:
-    - eu-west-1
     - us-east-1
     - us-west-2
   reporting: true
@@ -13,4 +12,9 @@ tests:
     regions:
       - us-east-1
       - us-west-2
+    template_file: CloudLens-EastWind-QuickStart.template.json
+  custom-ami:
+    parameter_input: customami-input.json
+    regions:
+      - us-east-1
     template_file: CloudLens-EastWind-QuickStart.template.json

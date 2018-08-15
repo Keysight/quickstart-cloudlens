@@ -1,0 +1,30 @@
+[
+    {
+        "ParameterKey": "QSS3KeyPrefix",
+        "ParameterValue": "quickstart-microsoft-sql/"
+    },
+    {
+        "ParameterKey": "AvailabilityZones",
+        "ParameterValue": "$[taskcat_genaz_2]"
+    },
+    {
+        "ParameterKey": "SSHKeyName",
+        "ParameterValue": "$[taskcat_getkeypair]"
+    },
+    {
+        "ParameterKey": "CloudLensProjectKey",
+        "ParameterValue": "$[taskcat_genpass_40A]"
+    },
+    {
+        "ParameterKey": "SourceInstanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "ToolInstanceType",
+        "ParameterValue": "t2.medium"
+    },
+    {
+        "ParameterKey": "CustomAMIId",
+        "ParameterValue": "ami-90369dea"
+    }
+]

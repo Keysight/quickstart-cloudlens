@@ -10,7 +10,7 @@
             "Type": "String"
         },
         "AvailabilityZones": {
-            "Description": "List of Availability Zones to use for the subnets in the VPC. Note: The logical order is preserved and only 2 AZs are used for this deployment.",
+            "Description": "List of Availability Zones to use for the subnets in the VPC. Note: The logical order is preserved and 2 AZs must be selected.",
             "Type": "List<AWS::EC2::AvailabilityZone::Name>"
         },
         "PublicSubnet1CIDR": {
