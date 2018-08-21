@@ -40,7 +40,7 @@
         "CloudLensProjectKey": {
             "Description": "CloudLens Project key for the source and tool instances",
             "Type": "String",
-            "MinLength": "8",
+            "MinLength": "40",
             "Default": "<your project key>"
         },
         "CustomAMIId": {
