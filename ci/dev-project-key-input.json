@@ -1,0 +1,26 @@
+[
+    {
+        "ParameterKey": "QSS3KeyPrefix",
+        "ParameterValue": "quickstart-microsoft-sql/"
+    },
+    {
+        "ParameterKey": "AvailabilityZones",
+        "ParameterValue": "$[taskcat_genaz_2]"
+    },
+    {
+        "ParameterKey": "SSHKeyName",
+        "ParameterValue": "$[taskcat_getkeypair]"
+    },
+    {
+        "ParameterKey": "CloudLensProjectKey",
+        "ParameterValue": "dev-test-servername||$[taskcat_genpass_40A]"
+    },
+    {
+        "ParameterKey": "SourceInstanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "ToolInstanceType",
+        "ParameterValue": "t2.medium"
+    }
+]

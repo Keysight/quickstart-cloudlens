@@ -1,0 +1,38 @@
+[
+    {
+        "ParameterKey": "QSS3KeyPrefix",
+        "ParameterValue": "quickstart-microsoft-sql/"
+    },
+    {
+        "ParameterKey": "AvailabilityZones",
+        "ParameterValue": "$[taskcat_genaz_2]"
+    },
+    {
+        "ParameterKey": "SSHKeyName",
+        "ParameterValue": "$[taskcat_getkeypair]"
+    },
+    {
+        "ParameterKey": "CloudLensProjectKey",
+        "ParameterValue": "$[taskcat_genpass_40A]"
+    },
+    {
+        "ParameterKey": "SourceInstanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "ToolInstanceType",
+        "ParameterValue": "t2.medium"
+    },
+    {
+        "ParameterKey": "VPCCIDR",
+        "ParameterValue": "12.0.0.0/16"
+    },
+    {
+        "ParameterKey": "PublicSubnet1CIDR",
+        "ParameterValue": "12.0.135.0/20"
+    },
+    {
+        "ParameterKey": "PublicSubnet2CIDR",
+        "ParameterValue": "12.0.121.0/20"
+    }
+]

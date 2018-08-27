@@ -18,3 +18,14 @@ tests:
     regions:
       - us-east-1
     template_file: CloudLens-EastWind-QuickStart.template.json
+  dev-servername:
+    parameter_input: dev-project-key-input.json
+    regions:
+      - us-east-1
+    template_file: CloudLens-EastWind-QuickStart.template.json
+  custom-vpc-subnet:
+    parameter_input: custom-vpc-subnet-input.json
+    regions:
+      - us-east-1
+    template_file: CloudLens-EastWind-QuickStart.template.json
+
